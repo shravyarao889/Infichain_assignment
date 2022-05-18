@@ -20,11 +20,11 @@
         <p class="time"></p>
       </div>
       <div>
-        <h2>Sell</h2>
+        <h2>Average Sell Price:</h2>
         <p class="sell"></p>
       </div>
       <div>
-        <h2>Buy</h2>
+        <h2>Average Buy Price:</h2>
         <p class="buy"></p>
       </div>
     </div>
@@ -69,7 +69,7 @@
       const priceDiv = document.querySelector(`.${type}`);
 
       timeDiv.innerHTML = `Time ${new Date().toLocaleTimeString()}`;
-      priceDiv.innerHTML = `Average requested ${type} price: ${average}`;
+      priceDiv.innerHTML = `${average}`;
     }
   };
 
