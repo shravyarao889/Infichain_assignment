@@ -68,13 +68,25 @@
       const timeDiv = document.querySelector(`.time`);
       const priceDiv = document.querySelector(`.${type}`);
 
-      timeDiv.innerHTML = `Time ${new Date().toLocaleTimeString()}`;
+      timeDiv.innerHTML = `${new Date().toLocaleTimeString()}`;
       priceDiv.innerHTML = `${average}`;
     }
   };
 
-  socket.onmessage = (event) => {
-    const data = JSON.parse(event.data);
+
+
+
+
+
+
+ socket.onmessage = (event) => {    //The message event is fired when data is received through a WebSocket.
+   const data = JSON.parse(event.data);
+  
+
+    // socket.addEventListener('message', function (event) {
+    // console.log('Message from server ', event.data);
+    // const data = JSON.parse(event.data);
+//});
 
     for (let x in data) {
       const side = data.side;
@@ -83,13 +95,13 @@
       // Sell data
       if (type == "received" && side == "sell") {
         if (sellData.length > 100) {
-          buyData.shift();
+          sellData.shift();
         }
         sellData.push(data);
       }
 
       // Buy data
-      if (type == "received" && side == "buy") {
+      if (type == "received" && side == "buy") {   //to get valid and active data
         if (buyData.length > 100) {
           buyData.shift();
         }
